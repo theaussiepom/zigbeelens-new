@@ -42,6 +42,13 @@ class LockedCursor:
         finally:
             self._release()
 
+    @property
+    def rowcount(self) -> int:
+        try:
+            return self._cursor.rowcount
+        finally:
+            self._release()
+
     def __iter__(self):
         return self._cursor.__iter__()
 
